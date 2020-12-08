@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "message-push"
+version = "0.1.0"
+description = "create api, and user can use it send message to email/wechat/sms"
+authors = ["simple <zhaogang@smart-lifestyle.cn>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+fastapi = "^0.62.0"
+httpx = "^0.16.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[[tool.poetry.source]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple/"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
