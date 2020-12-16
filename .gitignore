@@ -144,3 +144,6 @@ cython_debug/
 
 # config
 config.yml
+
+template_example.md
+get_all_sms_template.http

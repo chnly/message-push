@@ -247,20 +247,17 @@ if __name__ == '__main__':
         "keyword1": {
             "value": "公司名称",
         },
-        # 设备信息
         "keyword2": {
             "value": "设备名称",
         },
-        # 发生时间
         "keyword3": {
             "value": "2020-02-02",
         },
-        # 告警描述
         "keyword4": {
             "value": "故障啦",
             "color": "#ff0000"
         },
-        # remark
+
         "remark": {
             "value": "remark",
         }
