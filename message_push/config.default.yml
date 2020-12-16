@@ -1,0 +1,35 @@
+email:
+  address: xx@xx.com
+  password: 'password'
+  smtp_server: smtp.office365.com
+  smtp_port: 587
+  template_path: 'path'
+
+sms:
+  account: account
+  auth_key: 'SharedAccessSignature sig=xxxxx&se=xxxx&skn=full'
+  api_server: api_server
+  api_version: 2018-10-01
+
+wechat:
+  wx_token_center_url: token_url
+  default_color: '#0c74da'
+
+azure:
+  b2c:
+    scope: 'xxxxx/.default'
+    client_id: 'xxxxx'
+    client_credential: 'password'
+    authority: 'https://login.chinacloudapi.cn/appid'
+
+redis:
+  server: 'server'
+  port: 6380
+  password: 'password'
+
+log:
+  console:
+    enable: true
+    level: DEBUG
+  file:
+    enable: true
