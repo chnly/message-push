@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+tests
+.git
+.idea
+__pycache__
+.DS_STore

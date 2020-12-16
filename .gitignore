@@ -142,3 +142,5 @@ cython_debug/
 .idea/
 .DS_Store
 
+# config
+config.yml
