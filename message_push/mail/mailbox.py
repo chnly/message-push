@@ -6,12 +6,20 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from typing import List
 from message_push.logconfig import loggers
-from message_push.utils import MailConfig
+from message_push.utils import config
 
 try:
     from .template import TemplateRender
 except ImportError:
     from template import TemplateRender
+
+
+class MailConfig:
+    address: str = config['email']['address']
+    password: str = config['email']['password']
+    smtp_server: str = config['email']['smtp_server']
+    smtp_port: int = config['email']['smtp_port']
+    template_path: str = config['email']['template_path']
 
 
 # 邮件模板
