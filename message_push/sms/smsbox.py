@@ -94,9 +94,9 @@ sms_sender = SMSBox(
 
 if __name__ == '__main__':
     data = {
-        'url': 'a.cn',
-        'name': 'zhaogang',
-        'date': '2020-09-01'
+        "url": "a.cn",
+        "name": "zhaogang",
+        "date": "2020-09-01"
     }
     template_name = '预约成功通知'
     account = SMSConfig.account
