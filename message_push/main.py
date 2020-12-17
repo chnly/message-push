@@ -1,11 +1,11 @@
 from typing import List, Optional
 from fastapi import FastAPI, Response, status, Header, Depends, BackgroundTasks
-from models import EmailModel, SMSModel, WechatModel
+from message_push.models import EmailModel, SMSModel, WechatModel
 import uvicorn
 from fastapi.security.oauth2 import get_authorization_scheme_param
 from fastapi.exceptions import HTTPException
 from starlette.status import HTTP_401_UNAUTHORIZED, HTTP_403_FORBIDDEN
-from authorize import has_access
+from message_push.authorize import has_access
 from mail.mailbox import html_loader, email_sender, EmailTemplate
 from sms.smsbox import sms_sender, SMSTemplate
 from wechat.wxbox import wx_sender, WXTemplate
