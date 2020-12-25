@@ -77,7 +77,8 @@ class MailBox:
             server.ehlo()
             server.starttls(context=self._context)
             server.login(self.username, self.password)
-            server.sendmail(self.username, mail.dest, msg=mail.new_mail().as_string())
+            loggers.info("send email start")
+            server.sendmail(self.username, (mail.dest+mail.cc), msg=mail.new_mail().as_string())
         loggers.info("send email successfully")
 
 
