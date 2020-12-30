@@ -80,7 +80,10 @@ class MailBox:
             server.starttls(context=self._context)
             server.login(self.username, self.password)
             loggers.info("send email start")
-            server.sendmail(self.username, (mail.dest+mail.cc), msg=mail.new_mail().as_string())
+            if mail.cc:
+                server.sendmail(self.username, (mail.dest+mail.cc), msg=mail.new_mail().as_string())
+            else:
+                server.sendmail(self.username, (mail.dest), msg=mail.new_mail().as_string())
         loggers.info("send email successfully")
 
 html_loader = TemplateAzure(MailConfig.blob_conn_str,MailConfig.blob_container_name)
