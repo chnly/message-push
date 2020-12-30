@@ -241,7 +241,7 @@ if __name__ == '__main__':
     authz = AzureClientAuthorization()
     token = authz.get_token()
     wx_box = WXBox()
-    to_users = ['oGTnct0FO7uoNsqhEBrwDsj66GAA']
+    to_users = ['oGTnct0FO7oNsqhEBrwDsj66GAAu']
     template_id = 'fqeg3t58XdEB21bz9XFcEONxwvjBz77C7NkzgP8cy9Y'
     data = {
         "keyword1": {

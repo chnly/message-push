@@ -6,9 +6,10 @@ from fastapi.security.oauth2 import get_authorization_scheme_param
 from fastapi.exceptions import HTTPException
 from starlette.status import HTTP_401_UNAUTHORIZED, HTTP_403_FORBIDDEN
 from message_push.authorize import has_access
-from mail.mailbox import html_loader, email_sender, EmailTemplate
+from mail.mailbox import email_sender, EmailTemplate,html_loader
 from sms.smsbox import sms_sender, SMSTemplate
 from wechat.wxbox import wx_sender, WXTemplate
+
 
 app = FastAPI()
 
@@ -36,13 +37,17 @@ async def push_email_message(params: EmailModel, response: Response, background_
     subject = params_dict['subject']
     to_users = params_dict['to_users']
     cc_users = params_dict['cc_users']
-    priority = params_dict['priority']
+    #priority = params_dict['priority']
     template_params = params_dict['message']
     html_file = template_name + ".html"
-    content = html_loader.render(html_file, **template_params)
-    sender = "digital.service@cn.abb.com"
-    new_email = EmailTemplate(subject, sender, to_users, cc_users, content)
-    background_tasks.add_task(email_sender.send, new_email)
+    if not html_loader.is_teplate_exist(html_file):
+        return "error"
+    else:
+        content = html_loader.get_template_content(html_file, **template_params)
+        #content = html_loader.render(html_file, **template_params)
+        sender = "digital.service@cn.abb.com"
+        new_email = EmailTemplate(subject, sender, to_users, cc_users, content)
+        background_tasks.add_task(email_sender.send, new_email)
 
     return "success"
 

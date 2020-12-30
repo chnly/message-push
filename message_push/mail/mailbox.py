@@ -9,9 +9,9 @@ from message_push.logconfig import loggers
 from message_push.utils import config
 
 try:
-    from .template import TemplateRender
+    from .template import TemplateRender,TemplateAzure
 except ImportError:
-    from template import TemplateRender
+    from template import TemplateRender,TemplateAzure
 
 
 class MailConfig:
@@ -20,6 +20,8 @@ class MailConfig:
     smtp_server: str = config['email']['smtp_server']
     smtp_port: int = config['email']['smtp_port']
     template_path: str = config['email']['template_path']
+    blob_conn_str: str = config['email']['blob_conn_str']
+    blob_container_name: str = config['email']['blob_container_name']
 
 
 # 邮件模板
@@ -81,18 +83,19 @@ class MailBox:
             server.sendmail(self.username, (mail.dest+mail.cc), msg=mail.new_mail().as_string())
         loggers.info("send email successfully")
 
-
-html_loader = TemplateRender(MailConfig.template_path)
+html_loader = TemplateAzure(MailConfig.blob_conn_str,MailConfig.blob_container_name)
+#html_loader = TemplateRender(MailConfig.template_path)
 email_sender = MailBox(MailConfig.address, MailConfig.password)
 
 
 if __name__ == "__main__":
-    htmlcontent = TemplateRender('./templates')
-    contents = htmlcontent.render('test1.html', title="服务工单", service_no="202999999999",
-                                  customer_name="xxx公司")
-    new_mail = EmailTemplate("欢迎来我家", MailConfig.address,
-                             ['zhaogang@smart-lifestyle.cn', '396276515@qq.com'], content=contents)
-
-    sender = MailBox(MailConfig.address, MailConfig.password)
-
-    sender.send(new_mail)
+    print("mail main")
+    #htmlcontent = TemplateRender('./templates')
+    # contents = htmlcontent.render('test1.html', title="服务工单", service_no="202999999999",
+    #                               customer_name="xxx公司")
+    # new_mail = EmailTemplate("欢迎来我家", MailConfig.address,
+    #                          ['zhaogang@smart-lifestyle.cn', '396276515@qq.com'], content=contents)
+    #
+    # sender = MailBox(MailConfig.address, MailConfig.password)
+    #
+    # sender.send(new_mail)

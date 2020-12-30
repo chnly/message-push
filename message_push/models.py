@@ -27,7 +27,7 @@ class EmailModel(BaseModel):
     to_users: List[str]
     cc_users: Optional[List[str]] = None
     message: Dict
-    priority: Optional[PriorityEnum] = "none"
+    #priority: Optional[PriorityEnum] = "none"
 
 
 class SMSModel(BaseModel):
